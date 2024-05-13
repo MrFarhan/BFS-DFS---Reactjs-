@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './style.css'; // Import CSS file for styling
+import BFS_DFS_GRAPH from './bfs_dfs_graph';
 
 const BFS_DFS = () => {
   const [graph] = useState({
@@ -66,27 +67,32 @@ const BFS_DFS = () => {
     }
     setTraversalResult(traversalResult);
   };
-
+  const [simple, setSimple] = useState(true)
   return (
     <div className="container">
-      <h1>Graph Traversal</h1>
-      <div className="options">
-        <label htmlFor="traversalType">Traversal Type:</label>
-        <select
-          id="traversalType"
-          value={traversalType}
-          onChange={(e) => setTraversalType(e.target.value)}
-        >
-          <option value="BFS">BFS</option>
-          <option value="DFS">DFS</option>
-        </select>
-        <button onClick={handleTraversal}>Traverse</button>
-      </div>
-      <div className="result">
-        <h2>{traversalType} Traversal:</h2>
-        <p>{traversalResult}</p>
-      </div>
-    </div>
+      <h1>BFS & DFS Traversal</h1>
+      <button onClick={() => setSimple((prev) => !prev)} style={{ marginBottom: 20 }}>Toggle view</button>
+      {simple ?
+        <>
+          <div className="options">
+            <label htmlFor="traversalType">Traversal Type:</label>
+            <select
+              id="traversalType"
+              value={traversalType}
+              onChange={(e) => setTraversalType(e.target.value)}
+            >
+              <option value="BFS">BFS</option>
+              <option value="DFS">DFS</option>
+            </select>
+            <button onClick={handleTraversal}>Traverse</button>
+          </div>
+          <div className="result">
+            <h2>{traversalType} Traversal:</h2>
+            <p>{traversalResult}</p>
+          </div>
+        </>
+        : <BFS_DFS_GRAPH />}
+    </div >
   );
 };
 
