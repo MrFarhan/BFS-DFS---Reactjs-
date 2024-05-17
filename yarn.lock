@@ -7985,6 +7985,11 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-tree-vis@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-tree-vis/-/react-tree-vis-1.0.0.tgz#ff3bfc2e459dd112a28cf8b568f8532dad79643f"
+  integrity sha512-9zHEXgQS6tiPfOhxjYAhYh5ziMd8jW/jXpnM4rXfp8cfRKoVCZEJh5nJ1yKHB4d0hLiYzLA5BgOIVdB94NDTLg==
+
 react@^18.3.1:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react/-/react-18.3.1.tgz#49ab892009c53933625bd16b2533fc754cab2891"

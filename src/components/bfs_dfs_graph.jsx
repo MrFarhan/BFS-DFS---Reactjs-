@@ -1,66 +1,129 @@
-import React, { useEffect, useState } from 'react'
-import { bfs } from './bfs';
+import React, { useEffect, useState } from "react";
+import { bfs } from "./bfs";
 // import { bfs } from "breadth-first-search";
 
 const BFS_DFS_GRAPH = () => {
-
   const friendsList = [
     {
-      nodeOne: "Jhon",
-      nodeTwo: "Matt",
+      nodeOne: "Karachi",
+      nodeTwo: "Hyderabad",
     },
     {
-      nodeOne: "Jhon",
-      nodeTwo: "Robert",
+      nodeOne: "Hyderabad",
+      nodeTwo: "Sukkur",
     },
     {
-      nodeOne: "Jhon",
-      nodeTwo: "Ana",
+      nodeOne: "Sukkur",
+      nodeTwo: "Sadiqabad",
     },
     {
-      nodeOne: "Matt",
-      nodeTwo: "Robert",
+      nodeOne: "Sadiqabad",
+      nodeTwo: "Multan",
     },
     {
-      nodeOne: "Ana",
-      nodeTwo: "Susan",
+      nodeOne: "Multan",
+      nodeTwo: "Lahore",
     },
     {
-      nodeOne: "Ana",
-      nodeTwo: "Robert",
+      nodeOne: "Sukkur",
+      nodeTwo: "Rohri",
     },
     {
-      nodeOne: "Robert",
-      nodeTwo: "Liz",
+      nodeOne: "Sukkur",
+      nodeTwo: "Rahim Yar Khan",
+    },
+    {
+      nodeOne: "Karachi",
+      nodeTwo: "Thatta",
     },
 
     {
-      nodeOne: "Robert",
-      nodeTwo: "Susan",
+      nodeOne: "Hyderabad",
+      nodeTwo: "Tando Muhammad Khan",
     },
   ];
 
+  const [nodeOne, setNodeOne] = useState("Karachi");
+  const [nodeTwo, setNodeTwo] = useState("Lahore");
+
   // create a possible connection
   const possibleConnection = {
-    nodeOne: "Jhon",
-    nodeTwo: "Liz"
+    nodeOne: nodeOne,
+    nodeTwo: nodeTwo,
   };
 
-  const [data, setData] = useState(null)
-  const [refresh, setRefresh] = useState(false)
+  const uniqueNamesSet = new Set();
+
+  friendsList.forEach((friend) => {
+    uniqueNamesSet.add(friend.nodeOne);
+    uniqueNamesSet.add(friend.nodeTwo);
+  });
+
+  const uniqueNamesArray = Array.from(uniqueNamesSet);
+
+  const [data, setData] = useState(null);
+  const [refresh, setRefresh] = useState(false);
+
   useEffect(() => {
-    setData(bfs(friendsList, possibleConnection))
-  }, [refresh])
+    setData(bfs(friendsList, possibleConnection));
+  }, [nodeOne || nodeTwo || refresh]);
 
-
+  useEffect(() => {
+    setData(bfs(friendsList, possibleConnection));
+  }, []);
 
   return (
-    <div>{data}
+    <div>
+      
+      <div>
+        <label htmlFor="traversalType">From</label>
+        <select
+          id="traversalType"
+          value={nodeOne}
+          onChange={(e) => setNodeOne(e.target.value)}
+        >
+          {uniqueNamesArray?.map((value, index) => {
+            return (
+              <option key={index} value={value}>
+                {value}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="traversalType">To</label>
+        <select
+          id="traversalType"
+          value={nodeTwo}
+          onChange={(e) => setNodeTwo(e.target.value)}
+        >
+          {uniqueNamesArray?.map((value, index) => {
+            return (
+              <option key={index} value={value}>
+                {value}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
+      <div style={{ textAlign: "left" }}>
+        {data?.map((value, index) => {
+          return (
+            <div key={index}>
+              <span>{index + 1}</span>
+              <span>{value}</span>
+            </div>
+          );
+        })}
+      </div>
       <br />
       <br />
       <button onClick={() => setRefresh((prev) => !prev)}>Refresh</button>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default BFS_DFS_GRAPH
+export default BFS_DFS_GRAPH;
