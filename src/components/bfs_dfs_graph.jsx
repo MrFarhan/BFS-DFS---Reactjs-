@@ -74,9 +74,15 @@ const BFS_DFS_GRAPH = () => {
 
   return (
     <div>
-      
-      <div>
-        <label htmlFor="traversalType">From</label>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "30px",
+          marginBottom: "20px",
+        }}
+      >
+        <label htmlFor="traversalType">From:</label>
         <select
           id="traversalType"
           value={nodeOne}
@@ -92,8 +98,15 @@ const BFS_DFS_GRAPH = () => {
         </select>
       </div>
 
-      <div>
-        <label htmlFor="traversalType">To</label>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "30px",
+          marginBottom: "20px",
+        }}
+      >
+        <label htmlFor="traversalType">To:</label>
         <select
           id="traversalType"
           value={nodeTwo}
@@ -109,10 +122,19 @@ const BFS_DFS_GRAPH = () => {
         </select>
       </div>
 
-      <div style={{ textAlign: "left" }}>
+      <div
+        style={{
+          textAlign: "left",
+          display: "flex",
+          flexDirection: "column",
+          fontSize: "20px",
+          fontWeight: 700,
+          color: "#fff",
+        }}
+      >
         {data?.map((value, index) => {
           return (
-            <div key={index}>
+            <div key={index} style={{ display: "flex", gap: "10px" }}>
               <span>{index + 1}</span>
               <span>{value}</span>
             </div>

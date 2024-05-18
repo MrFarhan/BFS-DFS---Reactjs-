@@ -107,6 +107,11 @@ const BFS_DFS = () => {
           {bst ? (
             <div>
               <input
+                style={{
+                  marginBottom: "20px",
+                  marginTop: "20px",
+                  marginRight: "10px",
+                }}
                 type="number"
                 onChange={(elem) =>
                   setInsertValue(parseInt(elem.currentTarget.value, 10))
@@ -115,6 +120,11 @@ const BFS_DFS = () => {
               <button onClick={() => insert(insertValue)}>Insert</button>
               <br />
               <input
+                style={{
+                  marginBottom: "20px",
+                  marginTop: "20px",
+                  marginRight: "10px",
+                }}
                 type="number"
                 onChange={(elem) =>
                   setRemoveValue(parseInt(elem.currentTarget.value, 10))
