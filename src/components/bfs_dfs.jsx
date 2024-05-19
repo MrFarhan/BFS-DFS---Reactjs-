@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "./style.css"; // Import CSS file for styling
-import BFS_DFS_GRAPH from "./bfs_dfs_graph";
+import "./style.css"; 
+import BFS_GRAPH from "./bfs_graph";
 import { BinarySearchTree, useBinarySearchTree } from "react-tree-vis";
 
 const BFS_DFS = () => {
   const [graph] = useState({
-    A: ["B", "C"],
+    A: ["A", "C"],
     B: ["A", "D", "E"],
     C: ["A", "F"],
     D: ["B"],
@@ -141,7 +141,7 @@ const BFS_DFS = () => {
           )}
         </>
       ) : (
-        <BFS_DFS_GRAPH />
+        <BFS_GRAPH />
       )}
     </div>
   );

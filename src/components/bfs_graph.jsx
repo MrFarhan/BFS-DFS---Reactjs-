@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { bfs } from "./bfs";
-// import { bfs } from "breadth-first-search";
 
-const BFS_DFS_GRAPH = () => {
+const BFS_GRAPH = () => {
   const friendsList = [
     {
       nodeOne: "Karachi",
@@ -148,4 +147,4 @@ const BFS_DFS_GRAPH = () => {
   );
 };
 
-export default BFS_DFS_GRAPH;
+export default BFS_GRAPH;
