@@ -2,43 +2,82 @@ import React, { useEffect, useState } from "react";
 import { bfs } from "./bfs";
 
 const BFS_GRAPH = () => {
-  const friendsList = [
+  const citiesList = [
     {
       nodeOne: "Karachi",
+      nodeTwo: "Thatta",
+    },
+    {
+      nodeOne: "Karachi",
+      nodeTwo: "Bela",
+    },
+    {
+      nodeOne: "Bela",
+      nodeTwo: "Turbat",
+    },
+    {
+      nodeOne: "Karachi",
+      nodeTwo: "Pasni",
+    },
+    {
+      nodeOne: "Pasni",
+      nodeTwo: "Gawadar",
+    },
+    {
+      nodeOne: "Gawadar",
+      nodeTwo: "Jiwani",
+    },
+    {
+      nodeOne: "Thatta",
       nodeTwo: "Hyderabad",
     },
     {
       nodeOne: "Hyderabad",
+      nodeTwo: "Nawabshah",
+    },
+    {
+      nodeOne: "Hyderabad",
+      nodeTwo: "Mirpurkhas",
+    },
+    {
+      nodeOne: "Nawabshah",
       nodeTwo: "Sukkur",
     },
     {
       nodeOne: "Sukkur",
-      nodeTwo: "Sadiqabad",
-    },
-    {
-      nodeOne: "Sadiqabad",
-      nodeTwo: "Multan",
-    },
-    {
-      nodeOne: "Multan",
-      nodeTwo: "Lahore",
-    },
-    {
-      nodeOne: "Sukkur",
-      nodeTwo: "Rohri",
+      nodeTwo: "Jacobabad",
     },
     {
       nodeOne: "Sukkur",
       nodeTwo: "Rahim Yar Khan",
     },
     {
-      nodeOne: "Karachi",
-      nodeTwo: "Thatta",
+      nodeOne: "Jacobabad",
+      nodeTwo: "Quetta",
     },
-
     {
-      nodeOne: "Hyderabad",
-      nodeTwo: "Tando Muhammad Khan",
+      nodeOne: "Rahim Yar Khan",
+      nodeTwo: "Khan Pur",
+    },
+    {
+      nodeOne: "Khan Pur",
+      nodeTwo: "Multan",
+    },
+    {
+      nodeOne: "Multan",
+      nodeTwo: "Faisalabad",
+    },
+    {
+      nodeOne: "Faisalabad",
+      nodeTwo: "Lahore",
+    },
+    {
+      nodeOne: "Multan",
+      nodeTwo: "Lahore",
+    },
+    {
+      nodeOne: "Multan",
+      nodeTwo: "Faisalabad",
     },
   ];
 
@@ -53,7 +92,7 @@ const BFS_GRAPH = () => {
 
   const uniqueNamesSet = new Set();
 
-  friendsList.forEach((friend) => {
+  citiesList.forEach((friend) => {
     uniqueNamesSet.add(friend.nodeOne);
     uniqueNamesSet.add(friend.nodeTwo);
   });
@@ -64,11 +103,11 @@ const BFS_GRAPH = () => {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    setData(bfs(friendsList, possibleConnection));
-  }, [nodeOne || nodeTwo || refresh]);
+    setData(bfs(citiesList, possibleConnection));
+  }, [nodeOne , nodeTwo , refresh]);
 
   useEffect(() => {
-    setData(bfs(friendsList, possibleConnection));
+    setData(bfs(citiesList, possibleConnection));
   }, []);
 
   return (
